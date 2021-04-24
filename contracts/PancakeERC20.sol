@@ -6,8 +6,8 @@ import './libraries/SafeMath.sol';
 contract PancakeERC20 is IPancakeERC20 {
     using SafeMath for uint;
 
-    string public constant name = 'Pancake LPs';
-    string public constant symbol = 'Cake-LP';
+    string public constant name = 'Floofy LPs';
+    string public constant symbol = 'Floof-LP';
     uint8 public constant decimals = 18;
     uint  public totalSupply;
     mapping(address => uint) public balanceOf;
@@ -79,7 +79,7 @@ contract PancakeERC20 is IPancakeERC20 {
     }
 
     function permit(address owner, address spender, uint value, uint deadline, uint8 v, bytes32 r, bytes32 s) external {
-        require(deadline >= block.timestamp, 'Pancake: EXPIRED');
+        require(deadline >= block.timestamp, 'Floofy: EXPIRED');
         bytes32 digest = keccak256(
             abi.encodePacked(
                 '\x19\x01',
@@ -88,7 +88,7 @@ contract PancakeERC20 is IPancakeERC20 {
             )
         );
         address recoveredAddress = ecrecover(digest, v, r, s);
-        require(recoveredAddress != address(0) && recoveredAddress == owner, 'Pancake: INVALID_SIGNATURE');
+        require(recoveredAddress != address(0) && recoveredAddress == owner, 'Floofy: INVALID_SIGNATURE');
         _approve(owner, spender, value);
     }
 }
